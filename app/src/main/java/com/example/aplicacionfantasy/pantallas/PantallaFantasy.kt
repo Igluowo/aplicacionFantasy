@@ -17,12 +17,14 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.navigation.NavController
+import com.example.aplicacionfantasy.ListaPaises
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun PantallaFantasy(navController: NavController, context: Context) {
     var query by remember { mutableStateOf("") }
     var activo by remember { mutableStateOf(false) }
+    var paises = ListaPaises().paises
     Column {
         SearchBar(
             query = query,
@@ -38,7 +40,10 @@ fun PantallaFantasy(navController: NavController, context: Context) {
             },
             placeholder = { Text(text = "Buscar") }
         ) {
-
+            val filtradoPaises = paises.filter { it.contains(query, true) }
+            filtradoPaises.forEach { nombre ->
+                Text("$nombre")
+            }
         }
     }
 }
