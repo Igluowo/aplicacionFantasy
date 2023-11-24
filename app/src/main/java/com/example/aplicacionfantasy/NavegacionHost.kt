@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.aplicacionfantasy.pantallas.PantallaPrincipal
 import com.example.aplicacionfantasy.pantallas.PantallaFantasy
+import com.example.aplicacionfantasy.pantallas.PantallaAniadir
 
 @Composable
 fun NavegacionHost(context : Context, volver : Boolean) {
@@ -17,6 +18,9 @@ fun NavegacionHost(context : Context, volver : Boolean) {
         }
         composable(route = Navegacion.PantallaFantasy.ruta) {
             PantallaFantasy(navController, context)
+        }
+        composable(route = Navegacion.PantallaAniadir.ruta) {
+            PantallaAniadir(navController, context)
         }
     }
 }

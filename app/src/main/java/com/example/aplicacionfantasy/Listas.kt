@@ -1,7 +1,26 @@
 package com.example.aplicacionfantasy
 
-class ListaEquipos {
-    val listaEquipos = listOf(
+class Listas {
+    var listaPaises = listOf(
+        "Brasil",
+        "Estados Unidos",
+        "Paises Bajos",
+        "Singapur",
+        "Reino Unido",
+        "Alemania",
+        "Corea del Sur",
+        "Japon",
+        "Chile",
+        "Turquia",
+        "China",
+        "Turquia",
+        "España",
+        "Indonesia",
+        "Rusia",
+        "Tailandia"
+    )
+
+    var listaEquipos = listOf(
         "Loud",
         "Evil Geniuses",
         "Paper Rex",
@@ -30,5 +49,4 @@ class ListaEquipos {
         "Bilibili Gaming",
         "BOOM Esports"
     )
-
 }
