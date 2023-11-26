@@ -1,7 +1,9 @@
 package com.example.aplicacionfantasy.pantallas
 
 import android.content.Context
+import android.os.Build
 import androidx.activity.compose.BackHandler
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.ScrollState
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -38,12 +40,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.aplicacionfantasy.Listas
+import com.example.aplicacionfantasy.R
 import com.example.aplicacionfantasy.Tarjeta
 import org.intellij.lang.annotations.JdkConstants.HorizontalAlignment
+import java.time.Instant
+import java.time.LocalDate
+import java.time.ZoneId
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PantallaAniadir(navController: NavController, context: Context, listaTarjetas: ArrayList<Tarjeta>) {
+fun PantallaAniadir(navController: NavController, context: Context, listaTarjetas: ArrayList<Tarjeta>, id: Int) {
     var posicionSlider by remember { mutableIntStateOf(0) }
     val listaMapas = listOf<String>("Bind", "Icebox", "Fracture", "Haven", "Split", "Lotus", "Ascent")
     Column(
@@ -52,9 +59,9 @@ fun PantallaAniadir(navController: NavController, context: Context, listaTarjeta
             .verticalScroll(rememberScrollState())
     ) {
         AgregarTexo(texto = "Introduce un equipo:")
-        var opcion = AgregarDropDown(lista = Listas().listaEquiposNombre)
+        var fieldEquipo = AgregarDropDown(lista = Listas().listaEquiposNombre)
         AgregarTexo(texto = "Introduce país del equipo:")
-        AgregarDropDown(lista = Listas().listaPaises)
+        var fieldPais =AgregarDropDown(lista = Listas().listaPaises)
         AgregarTexo(texto = "Mapas jugados:")
         for (elemento in listaMapas) {
             Row {
@@ -67,11 +74,15 @@ fun PantallaAniadir(navController: NavController, context: Context, listaTarjeta
             Text(text = "$posicionSlider")
         }
         AgregarTexo(texto = "El equipo contra quien se jugo:")
-        AgregarDropDown(lista = Listas().listaEquiposNombre)
+        var fieldVS = AgregarDropDown(lista = Listas().listaEquiposNombre)
         Spacer(modifier = Modifier.padding(15.dp))
-        AgregarDate()
+        var fecha = AgregarDate()
+        var fechaString = "${fecha?.dayOfMonth}/${fecha?.monthValue}/${fecha?.year}"
         BackHandler {
-            //Tarjeta()
+            var imagen = EscogerImagen(fieldEquipo)
+            var historia = escogerHistoria(fieldEquipo)
+            listaTarjetas.add(Tarjeta(id, imagen, fieldEquipo, fieldVS, fechaString, posicionSlider, fieldPais, historia))
+            navController.popBackStack()
         }
     }
 }
@@ -135,9 +146,10 @@ fun AgregarSlider(): Float {
     return posicionSlider
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AgregarDate() {
+fun AgregarDate(): LocalDate? {
     val state = rememberDatePickerState(initialDisplayMode = DisplayMode.Input)
     DatePicker(state = state,
         title = { Row {
@@ -145,4 +157,74 @@ fun AgregarDate() {
             }
         }
     )
+    var localDate = state?.selectedDateMillis?.let {
+        Instant.ofEpochMilli(it).atZone(ZoneId.of("UTC")).toLocalDate()
+    }
+    return localDate
+}
+
+fun EscogerImagen(equipo: String): Int {
+    var imagen = 0
+    when (equipo) {
+        "Loud" -> imagen = R.drawable.loud
+        "Evil Geniuses" -> imagen = R.drawable.evil
+        "Paper Rex" -> imagen = R.drawable.paperrex
+        "Fnatic" -> imagen = R.drawable.fnatic
+        "Optic Gaming" -> imagen = R.drawable.optic
+        "DRX" -> imagen = R.drawable.drx
+        "FunPlus Fenix" -> imagen = R.drawable.funplus
+        "ZETA DIVISION" -> imagen = R.drawable.zeta
+        "G2 Esports" -> imagen = R.drawable.g2
+        "Team Liquid" -> imagen = R.drawable.teamliquid
+        "KRU Esports" -> imagen = R.drawable.krus
+        "EDward Gaming" -> imagen = R.drawable.edward
+        "Xerxia" -> imagen = R.drawable.xerxia
+        "T1" -> imagen = R.drawable.t1
+        "XSET" -> imagen = R.drawable.xset
+        "NRG" -> imagen = R.drawable.nrg
+        "NAVI" -> imagen = R.drawable.navi
+        "The Guard" -> imagen = R.drawable.guard
+        "Leviatan Esports" -> imagen = R.drawable.leviatan
+        "100 Thieves" -> imagen = R.drawable.hundredthieves
+        "Cloud9" -> imagen = R.drawable.cloud9
+        "Giant Gaming" -> imagen = R.drawable.giant
+        "Bleed Esport" -> imagen = R.drawable.bleed
+        "FURIA Esports" -> imagen = R.drawable.furia
+        "Bilibili Gaming" -> imagen = R.drawable.bilibili
+        "BOOM Esports" -> imagen = R.drawable.boom
+    }
+    return imagen
+}
+
+fun escogerHistoria(equipo: String): Int {
+    var historia = 0
+    when (equipo) {
+        "Loud" -> historia = R.string.loud
+        "Evil Geniuses" -> historia = R.string.loud
+        "Paper Rex" -> historia = R.string.loud
+        "Fnatic" -> historia = R.string.loud
+        "Optic Gaming" -> historia = R.string.loud
+        "DRX" -> historia = R.string.drx
+        "FunPlus Fenix" -> historia = R.string.loud
+        "ZETA DIVISION" -> historia = R.string.loud
+        "G2 Esports" -> historia = R.string.loud
+        "Team Liquid" -> historia = R.string.loud
+        "KRU Esports" -> historia = R.string.bilibili
+        "EDward Gaming" -> historia = R.string.bilibili
+        "Xerxia" -> historia = R.string.bilibili
+        "T1" -> historia = R.string.bilibili
+        "XSET" -> historia = R.string.bilibili
+        "NRG" -> historia = R.string.bilibili
+        "NAVI" -> historia = R.string.bilibili
+        "The Guard" -> historia = R.string.bilibili
+        "Leviatan Esports" -> historia = R.string.bilibili
+        "100 Thieves" -> historia = R.string.bilibili
+        "Cloud9" -> historia = R.string.cloud9
+        "Giant Gaming" -> historia = R.string.bilibili
+        "Bleed Esport" -> historia = R.string.bleed
+        "FURIA Esports" -> historia = R.string.bilibili
+        "Bilibili Gaming" -> historia = R.string.bilibili
+        "BOOM Esports" -> historia = R.string.boom
+    }
+    return historia
 }

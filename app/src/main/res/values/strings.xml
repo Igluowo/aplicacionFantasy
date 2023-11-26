@@ -1,3 +1,36 @@
 <resources>
-    <string name="app_name">AplicacionFantasy</string>
+    <string name="app_name">Valorant Fantasy</string>
+    <string name="loud">
+El equipo de Valorant LOUD fue fundado en 2022 por la organización brasileña de deportes electrónicos LOUD. El equipo se formó con un grupo de jugadores jóvenes y talentosos, liderados por el jugador argentino Matias Delipetro, conocido como "saadhak".
+LOUD rápidamente se convirtió en uno de los equipos más dominantes de la escena brasileña de Valorant. En 2022, el equipo ganó el VCT Brazil Stage 1 Masters, el VCT Brazil Stage 2 Challengers y el VCT Brazil Stage 2 Masters. Estos resultados les permitieron clasificarse para el VALORANT Champions 2022, el torneo más importante del mundo de Valorant.
+En el VALORANT Champions 2022, LOUD alcanzó la final, donde se enfrentó al equipo norteamericano OpTic Gaming. En un partido muy reñido, LOUD derrotó a OpTic Gaming por 3-2, convirtiéndose en los primeros campeones mundiales de Valorant.
+El éxito de LOUD en el VALORANT Champions 2022 les convirtió en uno de los equipos más populares del mundo de los deportes electrónicos. El equipo cuenta con una gran base de fans en Brasil y en todo el mundo.
+En 2023, LOUD ha continuado su dominio en la escena brasileña de Valorant. El equipo ha ganado el VCT Brazil Stage 1 Masters y el VCT Brazil Stage 2 Challengers. Estos resultados les han permitido clasificarse para el VALORANT Champions Tour Stage 3 Masters Berlín, que se celebrará en agosto de 2023.
+LOUD es un equipo joven y talentoso con un gran potencial. El equipo tiene la oportunidad de convertirse en uno de los equipos más dominantes de la historia de Valorant.
+    </string>
+    <string name="bilibili">
+        Bilibili, también conocido como B站 (B Station), es un sitio web chino de videos compartidos y comunidad en línea. Es uno de los sitios web de videos compartidos más populares de China, con más de 200 millones de usuarios activos mensuales. Bilibili es conocido por su contenido de anime, manga y juegos, así como por su contenido generado por el usuario, como videos de música, baile y comedia. El sitio web también es popular por sus funciones de transmisión en vivo, que se utilizan para juegos, música y otros eventos.
+Bilibili fue fundado en 2009 por Xu Yixiong, un empresario chino. El sitio web se llamaba originalmente Mikufans.com, y se centraba principalmente en contenido de anime y manga. En 2010, el sitio web se renombró como Bilibili, y comenzó a expandir su enfoque para incluir otros tipos de contenido, como juegos, música y baile.
+Bilibili es una plataforma popular para jóvenes en China. El sitio web es conocido por su cultura única, que se caracteriza por su uso de comentarios de balas. Los comentarios de balas son comentarios en tiempo real que aparecen en la pantalla mientras se reproduce un video. Los comentarios de balas a menudo se usan para proporcionar comentarios sobre el video, para hacer preguntas o para hacer bromas.
+Bilibili ha sido elogiado por su papel en la promoción de la cultura china. El sitio web ha ayudado a popularizar el anime, el manga y los juegos chinos. Bilibili también ha sido acreditado por ayudar a crear una nueva generación de creadores culturales chinos.
+Sin embargo, Bilibili también ha sido criticado por su censura. El sitio web ha sido acusado de censurar contenido crítico del gobierno chino. Bilibili también ha sido criticado por su uso de algoritmos que promueven contenido que es popular entre los usuarios del sitio web, incluso si ese contenido es de baja calidad u ofensivo.
+En general, Bilibili es un sitio web popular e influyente en China. El sitio web ha ayudado a promover la cultura china y a crear una nueva generación de creadores culturales chinos. Sin embargo, Bilibili también ha sido criticado por su censura y su uso de algoritmos que promueven contenido de baja calidad.
+    </string>
+    <string name="bleed">
+        Bleed Esports is a Singaporean esports organization founded in 2017. The organization currently competes in multiple esports titles, including VALORANT, Dota 2, Mobile Legends: Bang Bang, Rainbow Six Siege, and PUBG Mobile.
+Bleed Esports has had notable achievements in several esports titles. In VALORANT, they have won multiple regional tournaments and have qualified for several international events. In Dota 2, they have consistently placed among the top teams in Southeast Asia. In Mobile Legends: Bang Bang, they have won the Singapore national championship and have placed well in regional tournaments.
+Bleed Esports is known for its passionate and dedicated fan base. The organization has a strong presence in Southeast Asia and is rapidly gaining popularity around the world.
+    </string>
+    <string name="boom">
+Boom Esports ha tenido logros notables en varios títulos de deportes electrónicos. En VALORANT, han ganado múltiples torneos regionales y se han clasificado para varios eventos internacionales. En Free Fire, han ganado la Free Fire World Series 2022 y han sido campeones mundiales. En League of Legends, han ganado la Liga Brasileira de League of Legends (CBLOL) en tres ocasiones.
+    </string>
+    <string name="cloud9">
+
+1
+Cloud9 is an American professional esports organization based in Santa Monica, California. The company was originally founded as a professional League of Legends team by Jack and Paullie Etienne in May 2013 and was incorporated into Cloud9 Esports, Inc. on September 6, 2016.
+Cloud9 has held divisions in numerous esports throughout its existence, establishing eight by 2014. In 2018, Cloud9 won three international championships: the Rocket League Championship Series Season 6 World Championship, the 2018 Overwatch League Grand Finals, and the ELEAGUE Major: Boston 2018.
+    </string>
+    <string name="drx">
+DRX (formerly known as DragonX and KING-ZONE DragonX) is a South Korean esports organization with teams competing in League of Legends, Tekken 7, Valorant and Warcraft. It previously had teams competing in Honor of Kings and Clash Royale.
+    </string>
 </resources>
