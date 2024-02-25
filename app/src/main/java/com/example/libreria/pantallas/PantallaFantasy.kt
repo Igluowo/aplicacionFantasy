@@ -1,4 +1,4 @@
-package com.example.aplicacionfantasy.pantallas
+package com.example.libreria.pantallas
 
 import android.content.Context
 import android.widget.Toast
@@ -24,7 +24,6 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.Checkbox
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExtendedFloatingActionButton
-import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.ListItem
@@ -32,24 +31,24 @@ import androidx.compose.material3.SearchBar
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.State
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
-import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import com.example.aplicacionfantasy.Listas
-import com.example.aplicacionfantasy.Navegacion
-import com.example.aplicacionfantasy.R
-import com.example.aplicacionfantasy.Tarjeta
+import com.example.libreria.R
+import com.example.libreria.navegacion.Navegacion
+import com.example.libreria.clases.Tarjeta
+import com.example.libreria.viewmodels.ViewModelGeneral
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -59,17 +58,19 @@ fun PantallaFantasy(
     listaTarjetas: ArrayList<Tarjeta>,
     id: Int
 ) {
+    val viewModelEso: ViewModelGeneral = viewModel()
     var query by remember { mutableStateOf("") }
     var activo by remember { mutableStateOf(false) }
     var borrarPulsado by remember { mutableIntStateOf(0) }
     var tarjetas: MutableState<MutableList<Tarjeta>> = remember { mutableStateOf(mutableListOf()) }
-    var paises = Listas().listaPaises
     var id2 by remember { mutableIntStateOf(0) }
     if (id2 > 0) {}else{
         for (tarjeta in listaTarjetas) {
             tarjetas.value.add(tarjeta)
         }
     }
+    val lista = viewModelEso.listaLibros.collectAsState().value
+    viewModelEso.getRecursos("autor")
     id2++
     var habilitado by remember { mutableStateOf(true) }
     var tarjetasBorradas: MutableState<MutableList<Int>> = rememberSaveable { mutableStateOf(mutableListOf()) }
@@ -88,21 +89,20 @@ fun PantallaFantasy(
                     modifier = Modifier.width(25.dp))},
                 placeholder = { Text(text = "Buscar") }
             ) {
-            val filtradoPaises = paises.filter { it.contains(query, true) }
+            //val filtradoPaises = paises.filter { it.contains(query, true) }
             LazyColumn()
             {
-                items(filtradoPaises){
+                items(lista){
                         nombre ->
-                    ListItem(modifier = Modifier.clickable { query = nombre; activo = false },
-                        headlineContent = { Text(nombre) },
+                    ListItem(modifier = Modifier.clickable { query = ""; activo = false },
+                        headlineContent = { Text(nombre.nacionalidad) },
                         trailingContent = { Icon(imageVector = Icons.Default.AccountBox, contentDescription = null)},
                         leadingContent = { Icon(imageVector = Icons.Default.Star, contentDescription = null)})
                 }
             }
         }
         LazyColumn {
-            items(tarjetas.value) { tarjeta ->
-                if (tarjeta.id in tarjetasBorradas.value) { }else{
+            items(lista) { tarjeta ->
                     if (query == "") {
                         Card(modifier = Modifier
                             .fillMaxWidth()
@@ -110,21 +110,20 @@ fun PantallaFantasy(
                         ) {
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 Box(modifier = Modifier.padding(30.dp, 10.dp)) {
-                                    Image(painter = painterResource(id = tarjeta.imagen) , contentDescription = null,
-                                        modifier = Modifier.width(80.dp)
-                                    )
+                                    //Image(painter = painterResource(id = tarjeta.imagenUrl) , contentDescription = null,
+                                      //  modifier = Modifier.width(80.dp)
+                                    //)
                                 }
                                 Column(horizontalAlignment = Alignment.CenterHorizontally,
                                     verticalArrangement = Arrangement.Center
                                 ) {
-                                    Text(text = tarjeta.equipo)
-                                    Text(text = "${tarjeta.equipoVS}, ${tarjeta.fecha}")
-                                    Text(text = "${tarjeta.puntos} mapas ganados")
+                                    Text(text = tarjeta.nombreAutor)
+                                    Text(text = "${tarjeta.nacionalidad}")
                                 }
                                 if (borrarPulsado >= 1) {
                                     var checkeado by remember { mutableStateOf(false) }
                                     if (borrarPulsado == 2 && checkeado) {
-                                        tarjetasBorradas.value.add(tarjeta.id)
+                                        tarjetasBorradas.value.add(tarjeta.idAutor)
                                         borrarPulsado = 0
                                     }else if (!checkeado && borrarPulsado == 3){
                                         borrarPulsado = 0
@@ -135,28 +134,27 @@ fun PantallaFantasy(
                             }
                         }
                     }else{
-                        if (query == tarjeta.pais) {
+                        if (query == tarjeta.nacionalidad) {
                             Card(modifier = Modifier
                                 .fillMaxWidth()
                                 .padding(5.dp), onClick = { }
                             ) {
                                 Row(verticalAlignment = Alignment.CenterVertically) {
                                     Box(modifier = Modifier.padding(30.dp, 10.dp)) {
-                                        Image(painter = painterResource(id = tarjeta.imagen) , contentDescription = null,
-                                            modifier = Modifier.width(80.dp)
-                                        )
+                                        //Image(painter = painterResource(id = tarjeta.imagenUrl) , contentDescription = null,
+                                          //  modifier = Modifier.width(80.dp)
+                                        //)
                                     }
                                     Column(horizontalAlignment = Alignment.CenterHorizontally,
                                         verticalArrangement = Arrangement.Center
                                     ) {
-                                        Text(text = tarjeta.equipo)
-                                        Text(text = "${tarjeta.equipoVS}, ${tarjeta.fecha}")
-                                        Text(text = "${tarjeta.puntos} mapas ganados")
+                                        Text(text = tarjeta.nombreAutor)
+                                        Text(text = "${tarjeta.nacionalidad}")
                                     }
                                     if (borrarPulsado >= 1) {
                                         var checkeado by remember { mutableStateOf(false) }
                                         if (borrarPulsado == 2 && checkeado) {
-                                            tarjetasBorradas.value.add(tarjeta.id)
+                                            tarjetasBorradas.value.add(tarjeta.idAutor)
                                             borrarPulsado = 0
                                         }else if (!checkeado && borrarPulsado == 3){
                                             borrarPulsado = 0
@@ -195,4 +193,5 @@ fun PantallaFantasy(
             }
         }
     }
-}
+
+

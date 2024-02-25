@@ -1,4 +1,4 @@
-package com.example.aplicacionfantasy
+package com.example.libreria.navegacion
 
 import android.content.Context
 import android.os.Build
@@ -11,10 +11,10 @@ import androidx.compose.runtime.setValue
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.aplicacionfantasy.pantallas.PantallaPrincipal
-import com.example.aplicacionfantasy.pantallas.PantallaFantasy
-import com.example.aplicacionfantasy.pantallas.PantallaAniadir
-import com.example.aplicacionfantasy.pantallas.PantallaDetalles
+import com.example.libreria.clases.Tarjeta
+import com.example.libreria.pantallas.PantallaPrincipal
+import com.example.libreria.pantallas.PantallaFantasy
+import com.example.libreria.pantallas.PantallaAniadir
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable

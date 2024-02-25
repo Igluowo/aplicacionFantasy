@@ -1,4 +1,4 @@
-package com.example.aplicacionfantasy.ui.theme
+package com.example.libreria.ui.theme
 
 import android.app.Activity
 import android.os.Build

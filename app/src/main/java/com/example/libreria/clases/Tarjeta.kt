@@ -1,4 +1,4 @@
-package com.example.aplicacionfantasy
+package com.example.libreria.clases
 
 class Tarjeta(id: Int, imagen: Int, equipo: String, equipoVS: String, fecha: String?, puntos: Int,
               pais: String, historia: Int) {

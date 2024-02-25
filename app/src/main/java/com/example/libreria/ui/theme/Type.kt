@@ -1,4 +1,4 @@
-package com.example.aplicacionfantasy.ui.theme
+package com.example.libreria.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

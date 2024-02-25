@@ -1,4 +1,4 @@
-package com.example.aplicacionfantasy
+package com.example.libreria
 
 import org.junit.Test
 

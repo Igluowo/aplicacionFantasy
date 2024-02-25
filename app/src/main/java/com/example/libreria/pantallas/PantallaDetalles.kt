@@ -1,4 +1,4 @@
-package com.example.aplicacionfantasy.pantallas
+package com.example.libreria.pantallas
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -7,7 +7,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
-import com.example.aplicacionfantasy.R
 
 @Composable
 fun PantallaDetalles(navController: NavController, equipo: String, equipoVS: String, pais: String,

@@ -1,4 +1,4 @@
-package com.example.aplicacionfantasy.pantallas
+package com.example.libreria.pantallas
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -11,7 +11,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import com.example.aplicacionfantasy.Navegacion
+import com.example.libreria.navegacion.Navegacion
 
 @Composable
 fun PantallaPrincipal(navController: NavController) {
@@ -20,7 +20,7 @@ fun PantallaPrincipal(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Bienvenido a Valorant Fantasy",
+            text = "Bienvenido a Libreria Paquito",
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(10.dp)
         )

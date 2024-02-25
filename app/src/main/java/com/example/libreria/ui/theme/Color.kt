@@ -1,4 +1,4 @@
-package com.example.aplicacionfantasy.ui.theme
+package com.example.libreria.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
