@@ -11,30 +11,23 @@ import androidx.compose.runtime.setValue
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.libreria.clases.Tarjeta
+import com.example.libreria.pantallas.PantallaLibros
 import com.example.libreria.pantallas.PantallaPrincipal
-import com.example.libreria.pantallas.PantallaFantasy
-import com.example.libreria.pantallas.PantallaAniadir
+import com.example.libreria.pantallas.PantallaMostrar
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun NavegacionHost(context : Context, volver : Boolean) {
     val navController = rememberNavController()
-    var tarjetas = ArrayList<Tarjeta>()
-    var id by remember { mutableIntStateOf(0) }
     NavHost(navController = navController, startDestination = Navegacion.PantallaPrincipal.ruta ) {
         composable(route = Navegacion.PantallaPrincipal.ruta) {
             PantallaPrincipal(navController)
         }
-        composable(route = Navegacion.PantallaFantasy.ruta) {
-            PantallaFantasy(navController, context, tarjetas, id)
+        composable(route = Navegacion.PantallaMostrar.ruta) {
+            PantallaMostrar(navController)
         }
-        composable(route = Navegacion.PantallaAniadir.ruta) {
-            PantallaAniadir(navController, context, tarjetas, id)
-            id++
-        }
-        composable(route = Navegacion.PantallaDetalles.ruta) {
-
+        composable(route = Navegacion.PantallaLibros.ruta) {
+            PantallaLibros(navController)
         }
     }
 }

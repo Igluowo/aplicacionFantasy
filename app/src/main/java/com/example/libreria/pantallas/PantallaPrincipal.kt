@@ -10,11 +10,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.libreria.navegacion.Navegacion
+import com.example.libreria.viewmodels.ViewModelGeneral
 
 @Composable
 fun PantallaPrincipal(navController: NavController) {
+    val viewModelGeneral: ViewModelGeneral = viewModel()
     Column(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
@@ -24,8 +27,13 @@ fun PantallaPrincipal(navController: NavController) {
             textAlign = TextAlign.Center,
             modifier = Modifier.padding(10.dp)
         )
-        Button(onClick = { navController.navigate(route = Navegacion.PantallaFantasy.ruta) }) {
-            Text(text = "Presione aquí para continuar")
+        Button(onClick = { navController.navigate(route = Navegacion.PantallaMostrar.ruta);
+            viewModelGeneral.cambiarDatoMostrado("autor") }) {
+            Text(text = "Acceder a autores")
+        }
+        Button(onClick = { navController.navigate(route = Navegacion.PantallaLibros.ruta);
+            viewModelGeneral.cambiarDatoMostrado("libro") }) {
+            Text(text = "Acceder a libros")
         }
     }
 }
